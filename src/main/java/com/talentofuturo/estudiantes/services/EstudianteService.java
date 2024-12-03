@@ -43,10 +43,10 @@ public class EstudianteService {
 	
 	public Boolean deleteByRut(String rut){
 		Boolean eliminado = false;
-		Estudiante actualiza = estudiantes.stream().filter(e -> e.getRut().equals(estudiante.getRut())).findFirst().orElse(new Estudiante());
+		Estudiante actualiza = estudiantes.stream().filter(e -> e.getRut().equals(rut)).findFirst().orElse(new Estudiante());
 		Integer index = estudiantes.indexOf(actualiza);
 		if(index > 0) {
-			estudiantes.remove(index)
+			estudiantes.remove(index);
 			eliminado = true;
 		}
 		return eliminado;
