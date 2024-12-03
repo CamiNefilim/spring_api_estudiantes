@@ -32,11 +32,23 @@ public class EstudianteService {
 	}
 	
 	public Estudiante update(Estudiante estudiante){
-		return estudiante;
+		Estudiante actualiza = estudiantes.stream().filter(e -> e.getRut().equals(estudiante.getRut())).findFirst().orElse(new Estudiante());
+		Integer index = estudiantes.indexOf(actualiza);
+		if(index > 0) {
+			estudiantes.set(index, estudiante);
+			return estudiantes.stream().filter(e -> e.getRut().equals(estudiante.getRut())).findFirst().orElse(new Estudiante());
+		}
+		return new Estudiante();
 	}
 	
 	public Boolean deleteByRut(String rut){
-		Boolean eliminado = true;
+		Boolean eliminado = false;
+		Estudiante actualiza = estudiantes.stream().filter(e -> e.getRut().equals(estudiante.getRut())).findFirst().orElse(new Estudiante());
+		Integer index = estudiantes.indexOf(actualiza);
+		if(index > 0) {
+			estudiantes.remove(index)
+			eliminado = true;
+		}
 		return eliminado;
 	}
 	
